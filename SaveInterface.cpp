@@ -46,6 +46,47 @@ SaveInterface::SaveInterface(std::string dest) {
 
 }
 
+SaveInterface::SaveInterface() {
+
+	char* pValue;
+	size_t len;
+
+	// 1. Get systemdrive
+	errno_t err = _dupenv_s(&pValue, &len, "SystemDrive");
+	if (err || pValue == NULL) {
+		throw InvalidSourceDirectoryException();
+	}
+	std::string driveCode(pValue);
+	free(pValue);
+
+	// 2. Get Username
+	err = _dupenv_s(&pValue, &len, "USERNAME");
+	if (err || pValue == NULL) {
+		throw InvalidSourceDirectoryException();
+	}
+
+	std::string username(pValue);
+	free(pValue);
+
+	std::string destString = driveCode + DIR_1 + username + DEST_DEFAULT;
+
+	const std::filesystem::path destPath = std::filesystem::absolute(destString);
+
+	if (std::filesystem::create_directory(destPath)) {
+		std::cout << "DESTINATION CREATION SUCCESS" << std::endl;
+	}
+	else {
+		std::cout << "DIR ALREADY EXISTS " << std::endl;
+	}
+
+
+	builder = std::make_shared<SaveBuilder>();
+	saver = builder->buildSaver(username, driveCode, destPath);
+
+
+
+}
+
 
 // https://stackoverflow.com/a/41305019
 // https://stackoverflow.com/a/26293322
@@ -69,7 +110,7 @@ void SaveInterface::run() {
 
 			if (getJPEGWidth(width, height, p.path().u8string().c_str())) {
 
-				//std::cout << width << " " << height << std::endl;
+
 				if (width > height) {
 
 					std::ostringstream oss;

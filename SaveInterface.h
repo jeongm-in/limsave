@@ -12,7 +12,10 @@ class SaveInterface {
 
 public:
 	SaveInterface(std::string dest);
+	SaveInterface();
+
 	void run();
+
 	
 
 

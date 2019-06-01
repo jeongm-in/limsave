@@ -7,10 +7,9 @@
 
 const std::string DIR_1 = "/Users/";
 const std::string DIR_2 = "/AppData/Local/Packages/Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy/LocalState/Assets";
-const std::string DEST_DEFAULT_1 = "/Users/";
-const std::string DEST_DEFAULT_2 = "/Desktop/spotlight";
-const std::string SLASH = "/";
+const std::string DEST_DEFAULT = "/Desktop/limsave/";
 const std::string EXTENSION_JPG = ".jpg";
+//const std::string DEST_
 //C: / Users / jmlim / Desktop / myFolder
 
 enum exit_code {
@@ -21,6 +20,8 @@ enum exit_code {
 };
 
 enum named_constants {
+	DEFAULT_ARG = 1,
 	EXPECTED_ARG = 2,
 	MINIMUM_FILE_SIZE = 50000,
 };
+
