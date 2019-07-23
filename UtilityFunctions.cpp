@@ -2,7 +2,9 @@
 #include <iostream>
 
 
-
+// code to get the dimension of given jpeg file.
+// source: C++ library for getting the JPEG image size [closed]
+// https://stackoverflow.com/a/17848968
 int getJPEGWidth(int& width, int& height, const char* file_name) {
 
 	FILE* image;
