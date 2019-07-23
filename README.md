@@ -23,7 +23,5 @@
 - This program was built in `Windows 10 Pro Build 1809`,`Microsoft Visual Studio 2019`, using `ISO C++ 17 Standard`.
 
 
-
 ## Contributors
-- Jeong Min Lim (sogogibeef@gmail.com)
-  > Min is not my middle name
+- Jeong Min Lim (@jeongm-in)
